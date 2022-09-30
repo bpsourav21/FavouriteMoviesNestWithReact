@@ -4,6 +4,7 @@ import { SignInDto } from './dto/signIn.dto';
 import { SignUpDto } from './dto/signUp.dto';
 import * as bcrypt from 'bcrypt'
 import * as jwt from "jsonwebtoken";
+import { LoggedInDto } from './dto/loggedIn.dto';
 
 @Injectable()
 export class AuthService {
@@ -29,7 +30,7 @@ export class AuthService {
     return "User created successfully";
   }
 
-  async signIn(signIn: SignInDto): Promise<{ access_token: string }> {
+  async signIn(signIn: SignInDto): Promise<LoggedInDto> {
     // find the user by email
     const user =
       await this.userService.findOneByEmail(signIn.email);
@@ -68,6 +69,25 @@ export class AuthService {
         }
       );
 
-    return { access_token: signedToken };
+    const expiresIn = this.parseJwt(signedToken)
+
+    return {
+      access_token: signedToken,
+      expires_in: expiresIn ? expiresIn.exp : 0
+    };
+  }
+
+  parseJwt(token) {
+    try {
+      return JSON.parse(
+        Buffer.from(
+          token.split('.')[1], 'base64'
+        ).toString()
+      );
+
+    } catch (error) {
+      return null;
+    }
+
   }
 }
