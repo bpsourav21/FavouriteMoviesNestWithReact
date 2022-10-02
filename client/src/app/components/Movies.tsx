@@ -38,7 +38,7 @@ const Movies = () => {
     const rowData = _.map(allMovies, (movie: MovieDto, i: number) => {
       return (
         <tr key={"item_" + (i + 1)}>
-          <td>{i + 1}</td>
+          <td width={100}>{i + 1}</td>
           <td width={100}>{movie.id}</td>
           <td>{movie.movieName}</td>
           <td width={100} className="text-center">

@@ -1,6 +1,4 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { AuthModule } from './auth/auth.module';
 import { UserModule } from './user/user.module';
 import { PrismaModule } from './prisma/prisma.module';
@@ -15,11 +13,9 @@ import { join } from 'path';
     PrismaModule,
     MovieModule,
     ServeStaticModule.forRoot({
-      rootPath: join(__dirname, '..', 'client'),
+      rootPath: join(__dirname, '..', 'client/build'),
       exclude: ['/api*'],
     }),
   ],
-  controllers: [AppController],
-  providers: [AppService],
 })
 export class AppModule { }
