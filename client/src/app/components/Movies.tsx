@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import _ from "underscore";
+import * as _ from "underscore";
 import { addMovie, deleteMovie, getAllMovies } from "../actions/movieActions";
 import { MovieDto } from "../dtos/movie";
 import { useAppSelector, useAppDispatch } from "../hooks";

@@ -1,7 +1,7 @@
 import { LoggedInDto, LoginDto, SignupDto } from "../dtos/auth";
 import { AppDispatch } from "../store";
 import { AuthAction } from "./actionTypes";
-import _ from "underscore";
+import * as _ from "underscore";
 import apiService from "../service/apiService";
 import { showLoader } from "./commonAction";
 import { AxiosError, AxiosResponse } from "axios";
