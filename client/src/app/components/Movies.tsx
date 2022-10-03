@@ -1,7 +1,6 @@
 import React from "react";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import _ from "underscore";
 import { addMovie, deleteMovie, getAllMovies } from "../actions/movieActions";
 import { MovieDto } from "../dtos/movie";
 import { useAppSelector, useAppDispatch } from "../hooks";
@@ -35,7 +34,7 @@ const Movies = () => {
   }
 
   const renderTable = () => {
-    const rowData = _.map(allMovies, (movie: MovieDto, i: number) => {
+    const rowData = allMovies.map((movie: MovieDto, i: number) => {
       return (
         <tr key={"item_" + (i + 1)}>
           <td width={80}>{i + 1}</td>

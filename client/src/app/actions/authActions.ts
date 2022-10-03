@@ -1,10 +1,10 @@
 import { LoggedInDto, LoginDto, SignupDto } from "../dtos/auth";
 import { AppDispatch } from "../store";
 import { AuthAction } from "./actionTypes";
-import _ from 'underscore';
 import apiService from "../service/apiService";
 import { showLoader } from "./commonAction";
 import { AxiosError, AxiosResponse } from "axios";
+import { isNullOrEmpty } from "../helpers/commonMethod";
 
 export const authTokenKey = "accessToken";
 
@@ -81,7 +81,7 @@ export const logout = (callback: VoidFunction) => {
 
 export const isUserAuthenticated = () => {
   return (dispatch: AppDispatch) => {
-    const isAuthPresent = !_.isEmpty(getAuthToken());
+    const isAuthPresent = !isNullOrEmpty(getAuthToken());
     dispatch({ type: AuthAction.AUTHENTICATION, payload: isAuthPresent });
   };
 };

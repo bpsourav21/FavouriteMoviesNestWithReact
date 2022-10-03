@@ -1,15 +1,15 @@
-import _ from "underscore";
 import {
   AuthAction
 } from "../actions/actionTypes";
 import { getAuthToken } from "../actions/authActions";
+import { isNullOrEmpty } from "../helpers/commonMethod";
 
 export interface AuthState {
   loginErrorMsg: string;
   isAuthenticated: boolean;
 }
 
-const isAuthPresent = !_.isEmpty(getAuthToken());
+const isAuthPresent = !isNullOrEmpty(getAuthToken());
 const initialState: AuthState = {
   loginErrorMsg: "",
   isAuthenticated: isAuthPresent,
