@@ -21,7 +21,6 @@
     "test:e2e": "jest --config ./test/jest-e2e.json",
     "start:client": "cd client && npm install && npm start",
     "build:client": "cd client && npm install && npm run build",
-    "heroku-postbuild": "npm run build:client"
   },
   "dependencies": {
     "@nestjs/common": "^9.0.0",
